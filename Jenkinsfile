@@ -9,9 +9,9 @@ triggers {
     }
     stages {
         stage ('Initialize') {
-	      
+	      	def scannerHome = tool 'SonarQube Scanner 2.8';
             steps {
-				def scannerHome = tool 'SonarQube Scanner 2.8';
+			
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
