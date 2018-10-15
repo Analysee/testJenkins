@@ -3,9 +3,6 @@ pipeline {
 triggers {
       pollSCM('* * * * *')
     }
-	  environment {
-    def scannerHome = tool 'SonarQube Scanner 2.8';
-   }
     tools {
         maven 'maven'
         jdk 'jdk'
