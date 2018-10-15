@@ -22,6 +22,9 @@ triggers {
         stage ('Build') {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=true install' 
+				 withSonarQubeEnv('My SonarQube Server') {
+                        sh 'mvn clean package sonar:sonar'
+                    }
             }
             post {
                 success {
