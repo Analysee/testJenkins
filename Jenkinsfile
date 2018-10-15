@@ -6,7 +6,7 @@ triggers {
     tools {
         maven 'maven'
         jdk 'jdk'
-		sonar 'sonar'
+	sonar 'sonar'
     }
     stages {
         stage ('Initialize') {
@@ -19,6 +19,11 @@ triggers {
                 '''
             }
         }
+  stage('build && SonarQube analysis') {
+            steps {
+                withSonarQubeEnv('sonar'){
+                  sh 'mvn clean package sonar:sonar'
+}
 
         stage ('Build') {
             steps {
