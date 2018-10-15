@@ -19,12 +19,7 @@ triggers {
                 '''
             }
         }
-  stage('build && SonarQube analysis') {
-            steps {
-                withSonarQubeEnv('sonar'){
-                  sh 'mvn clean package sonar:sonar'
-}
-
+  
         stage ('Build') {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=true install' 
