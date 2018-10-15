@@ -4,11 +4,11 @@ pipeline {
         maven 'maven'
         jdk 'jdk'
     }
+properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('H/15 * * * *')])])
     stages {
         stage ('Initialize') {
 	      
             steps {
-properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('H/15 * * * *')])])
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
