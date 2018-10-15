@@ -20,7 +20,9 @@ triggers {
         }
 
         stage ('Build') {
+					script{
 			      	def scannerHome = tool 'SonarQube Scanner 2.8';
+					}
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=true install' 
             }
