@@ -1,10 +1,12 @@
 pipeline {
     agent any
+triggers {
+      pollSCM('H */4 * * 1-5')
+    }
     tools {
         maven 'maven'
         jdk 'jdk'
     }
-options([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('H/15 * * * *')])])
     stages {
         stage ('Initialize') {
 	      
