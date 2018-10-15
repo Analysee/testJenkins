@@ -6,6 +6,7 @@ pipeline {
     }
     stages {
         stage ('Initialize') {
+	      properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('H/15 * * * *')])])
             steps {
                 sh '''
                     echo "PATH = ${PATH}"
