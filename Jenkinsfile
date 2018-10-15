@@ -4,7 +4,7 @@ pipeline {
         maven 'maven'
         jdk 'jdk'
     }
-properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('H/15 * * * *')])])
+options([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('H/15 * * * *')])])
     stages {
         stage ('Initialize') {
 	      
