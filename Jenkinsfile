@@ -23,10 +23,11 @@ pipeline {
                 -Dsonar.host.url=https://sonarqubelindacare.westeurope.cloudapp.azure.com \
                 -Dsonar.login=61198c2c65df058fd9543db21cede430e055acfc'
             }
+			
         }
          stage ('Build') {
             steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true install' 
+                sh 'mvn clean install' 
             }
             post {
                 success {
@@ -35,4 +36,5 @@ pipeline {
             }
         }
     }
+	
 }
