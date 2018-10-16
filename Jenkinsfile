@@ -16,7 +16,10 @@ pipeline {
         }
 
             stage("Building SONAR ...") {
+                steps{
             sh './gradlew clean sonarqube'
+
+                }
             
         } 
         
