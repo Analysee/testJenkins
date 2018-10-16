@@ -17,7 +17,7 @@ pipeline {
 
             stage("Building SONAR ...") {
                 steps{
-            sh './gradlew clean sonarqube'
+            sh './maven clean sonarqube'
 
                 }
             
