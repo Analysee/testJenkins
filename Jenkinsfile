@@ -15,11 +15,11 @@ pipeline {
             }
         }
 
-            stage("Building SONAR ...") {
-                steps{
-            sh './maven clean sonarqube'
+            //stage("Building SONAR ...") {
+              //  steps{
+            //sh './maven clean sonarqube'
 
-                }
+             //   }
             
         } 
         
