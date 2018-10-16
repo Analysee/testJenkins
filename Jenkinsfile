@@ -51,12 +51,6 @@ pipeline {
             classifier('debug')
             file('nexus-artifact-uploader.jar')
         }
-        artifact {
-            artifactId('nexus-artifact-uploader')
-            type('hpi')
-            classifier('debug')
-            file('nexus-artifact-uploader.hpi')
-        }
       }
     }
 		}
