@@ -25,7 +25,7 @@ pipeline {
         
         stage('Statical Code Analysis') {
             steps {
-                withSonarQubeEnv('sonarcloud.io') {
+                withSonarQubeEnv('werk') {
                     mvn "$SONAR_MAVEN_GOAL -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_AUTH_TOKEN " +
                             // Here, we could define e.g. sonar.organization, needed for sonarcloud.io
                             "$SONAR_EXTRA_PROPS " +
