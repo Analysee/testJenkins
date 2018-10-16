@@ -15,15 +15,16 @@ pipeline {
                 '''
             }
         }
+
         stage('SonarQube analysis') {
             steps {
-                withSonarQubeEnv('werk') {
-                sh 'mvn clean package sonar:sonar'
-              }
-               
+                sh 'mvn sonar:sonar \
+                -Dsonar.projectKey=please \
+                -Dsonar.organization=analysee-github \
+                -Dsonar.host.url=http://sonarqubelindacare.westeurope.cloudapp.azure.com:9000 \
+                -Dsonar.login=61198c2c65df058fd9543db21cede430e055acfc'
             }
-			
-        }
+        
          stage ('Build') {
             steps {
                 sh 'mvn clean install' 
