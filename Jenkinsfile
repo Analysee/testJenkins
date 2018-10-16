@@ -37,17 +37,21 @@ pipeline {
         }
 		stage('Artifact'){
 		steps{
-		nexusArtifactUploader artifacts: [
-		[artifactId: 'nexus-artifact-uploader', classifier: 'debug', file: 'nexus-artifact-uploader.jar', type: 'jar'], 
-		[artifactId: 'nexus-artifact-uploader', classifier: 'debug', file: 'nexus-artifact-uploader.hpi', type: 'hpi']
-		], 
-		credentialsId: '44620c50-1589-4617-a677-7563985e46e1', 
-		groupId: 'sp.sd', 
-		nexusUrl: 'localhost:8080/nexus', 
-		nexusVersion: 'nexus2', 
-		protocol: 'http', 
-		repository: 'NexusArtifactUploader', 
-		version: '2.4'
+		nexusArtifactUploader(
+		nexusVersion: 'nexus3',
+		protocol: 'http',
+		nexusUrl: 'my.nexus.address',
+		groupId: 'com.example',
+		version: version,
+		repository: 'RepositoryName',
+		credentialsId: 'CredentialsId',
+		artifacts: [
+			[artifactId: projectName,
+			 classifier: '',
+			 file: 'my-service-' + version + '.jar',
+			 type: 'jar']
+			]		
+ )
 		}
 		
 		}
