@@ -36,8 +36,8 @@ pipeline {
             }
         }
 		stage('Artifact'){
-		steps {
-		nexusArtifactUploader {
+		  steps {
+      nexusArtifactUploader {
         nexusVersion('nexus2')
         protocol('http')
         nexusUrl('localhost:8080/nexus')
@@ -59,7 +59,6 @@ pipeline {
         }
       }
     }
-		
 		}
     }
 	
