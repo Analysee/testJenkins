@@ -29,7 +29,7 @@ pipeline {
         stage('Statical Code Analysis') {
             steps {
                 withSonarQubeEnv('werk') {
-                  sh  "mvn '$SONAR_MAVEN_GOAL -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_AUTH_TOKEN' " 
+                   sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
                             // Here, we could define e.g. sonar.organization, needed for sonarcloud.i
                            
                             // Additionally needed when using the branch plugin (e.g. on sonarcloud.io)
