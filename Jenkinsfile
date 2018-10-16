@@ -6,7 +6,6 @@ triggers {
     tools {
         maven 'maven'
         jdk 'jdk'
-		sonar 'sonar'
     }
     stages {
         stage ('Initialize') {
@@ -23,7 +22,6 @@ triggers {
         stage ('Build') {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=true install' 
-				sh 'mvn clean package sonar:sonar'
             }
             post {
                 success {
