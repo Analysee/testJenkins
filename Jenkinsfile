@@ -8,7 +8,8 @@ pipeline {
         stage ('Initialize') {
 	      
             steps {
-                 mvn 'clean install'
+   
+                echo mvn -version
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
