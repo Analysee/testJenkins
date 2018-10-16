@@ -27,7 +27,7 @@ pipeline {
         }
          stage ('Build') {
             steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true install' 
+                sh 'mvn clean install' 
             }
             post {
                 success {
@@ -35,26 +35,6 @@ pipeline {
                 }
             }
         }
-		stage('TEST'){
-		steps{
-		nexusArtifactUploader(
-    nexusVersion: 'nexus3',
-    protocol: 'http',
-    nexusUrl: 'my.nexus.address',
-    groupId: 'com.example',
-    version: version,
-    repository: 'RepositoryName',
-    credentialsId: 'CredentialsId',
-    artifacts: [
-        [artifactId: projectName,
-         classifier: '',
-         file: 'my-service-' + version + '.jar',
-         type: 'jar']
-    ]
- )
-		}
-		
-		}
     }
 	
 }
