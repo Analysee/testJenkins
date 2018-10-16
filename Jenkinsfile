@@ -14,7 +14,6 @@ pipeline {
                 '''
             }
         }
-<<<<<<< HEAD
         try {
             stage("Building SONAR ...") {
             sh './gradlew clean sonarqube'
@@ -23,9 +22,7 @@ pipeline {
             step([$class: 'WsCleanup'])
             return
         }
-=======
 
->>>>>>> 491b9350357ea4e5e58625df51e69b3c6adaa742
         stage ('Build') {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=true install' 
