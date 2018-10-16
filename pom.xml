@@ -24,8 +24,6 @@
   <properties>
     <maven.compiler.source>1.6</maven.compiler.source>
     <maven.compiler.target>1.6</maven.compiler.target>
-  </properties>
-  <settings>
     <profiles>
       <profile>
         <id>sonar</id>
@@ -52,5 +50,5 @@
         </properties>
       </profile>
     </profiles>
-  </settings>
+  </properties>
 </project>
