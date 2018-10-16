@@ -14,15 +14,16 @@ pipeline {
                 '''
             }
         }
-
-            //stage("Building SONAR ...") {
-              //  steps{
-            //sh './maven clean sonarqube'
-
-             //   }
-            
-        //} 
-        
+ stage ('Build') {
+            steps {
+                sh 'mvn -Dmaven.test.failure.ignore=true install' 
+            }
+            post {
+                success {
+                    junit 'target/surefire-reports/**/*.xml' 
+                }
+            }
+        }
         stage('Statical Code Analysis') {
             steps {
                 withSonarQubeEnv('werk') {
@@ -34,15 +35,6 @@ pipeline {
                 }
             }
         }
-        stage ('Build') {
-            steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true install' 
-            }
-            post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
-                }
-            }
-        }
+       
     }
 }
