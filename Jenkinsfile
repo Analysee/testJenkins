@@ -17,7 +17,9 @@ pipeline {
         }
         stage('SonarQube analysis') {
             steps {
-                sh 'mvn sonar:werk'
+                withSonarQubeEnv('werk') {
+                sh 'mvn clean package sonar:sonar'
+              }
                
             }
 			
