@@ -16,25 +16,13 @@ pipeline {
                 '''
             }
         }
- stage ('Build') {
-            steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true install' 
-            }
-            post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
-                }
-            }
-        }
-        stage('Statical Code Analysis') {
+  stage('build && SonarQube analysis') {
             steps {
                 withSonarQubeEnv('werk') {
-                   sh "-Dsonar.login=$SONAR_AUTH_TOKEN"
-                   sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar '
-                            // Here, we could define e.g. sonar.organization, needed for sonarcloud.i
-                           
-                            // Additionally needed when using the branch plugin (e.g. on sonarcloud.io)
-                         
+                    // Optionally use a Maven environment you've configured already
+                    withMaven(maven:'maven') {
+                        sh 'mvn clean package sonar:sonar'
+                    }
                 }
             }
         }
