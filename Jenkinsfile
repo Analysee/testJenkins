@@ -26,11 +26,11 @@ pipeline {
         stage('Statical Code Analysis') {
             steps {
                 withSonarQubeEnv('werk') {
-                    mvn "$SONAR_MAVEN_GOAL -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_AUTH_TOKEN " +
-                            // Here, we could define e.g. sonar.organization, needed for sonarcloud.io
+                    mvn "$SONAR_MAVEN_GOAL -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_AUTH_TOKEN " 
+                            // Here, we could define e.g. sonar.organization, needed for sonarcloud.i
                            
                             // Additionally needed when using the branch plugin (e.g. on sonarcloud.io)
-                            "-Dsonar.branch.name=$BRANCH_NAME -Dsonar.branch.target=master"
+                         
                 }
             }
         }
