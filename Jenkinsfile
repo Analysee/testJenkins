@@ -9,7 +9,7 @@ pipeline {
 	      
             steps {
    
-                echo mvn -version
+                echo maven -version
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
