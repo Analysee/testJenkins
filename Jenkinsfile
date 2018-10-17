@@ -28,7 +28,7 @@ pipeline {
         stage('SonarQube analysis') {
             steps {
                 sh 'mvn sonar:sonar \
-                -Dsonar.host.url=$SONAR_HOST_URL \
+                -Dsonar.host.url=http://sonarqubelindacare.westeurope.cloudapp.azure.com:9000 \
                 -Dsonar.login=61198c2c65df058fd9543db21cede430e055acfc'
             }
         }
