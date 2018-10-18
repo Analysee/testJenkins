@@ -20,7 +20,6 @@ node{
                    resourceGroup: 'lindacare-jenkins-test', appName: 'lindacare-java',
                    filePath: '*.war', sourceDirectory: 'target', targetDirectory: 'webapps'
 			sh 'az logout'
-			sh 'az logout'
         }
     }
 }
