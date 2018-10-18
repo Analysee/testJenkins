@@ -71,7 +71,6 @@
             <version>1.2</version>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
     <build>
         <finalName>java-web-project</finalName>
@@ -99,5 +98,11 @@
 
         </plugins>
     </build>
-
+    <distributionManagement>
+        <repository>
+            <id>lindacare</id>
+            <name>lindacare</name>
+            <url>http://jenkins5lindacare.westeurope.cloudapp.azure.com:8081/repository/lindacare/</url>
+        </repository>
+    </distributionManagement>
 </project>
