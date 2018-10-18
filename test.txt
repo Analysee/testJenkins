@@ -1,9 +1,0 @@
-aaaaaaaaaaasadfasfd CHANGES MREOJASDFJSADFJSDOA
-heeyasdfdsafsafasfsafsadfasdfs
-
-
-aaaad
-
-Build when a change is pushed to GitHub" has been oddly reworded to "GitHub hook trigger for GITScm polling" by https://github.com/jenkinsci/github-plugin/pull/162
-
-In the mean time, the build behavior seems changed and not controllable from Jenkins anymore.asdfdsafsdf
