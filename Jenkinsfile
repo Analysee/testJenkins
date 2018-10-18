@@ -4,9 +4,11 @@ node{
     withMaven(
         // Maven installation declared in the Jenkins "Global Tool Configuration"
         maven: 'maven',
+
         mavenLocalRepo: '.repository') {
+		
       // Run the maven build
-      sh "mvn clean install
+      sh "mvn clean install"
     } 
   }
   stage('SonarQube analysis') {
