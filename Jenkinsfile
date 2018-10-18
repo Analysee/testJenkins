@@ -15,16 +15,6 @@ pipeline {
                 '''
             }
         }
-        stage('SonarQube analysis') {
-            steps {
-                sh 'mvn sonar:sonar \
-                -Dsonar.projectKey=please \
-                -Dsonar.organization=analysee-github \
-                -Dsonar.host.url=https://sonarcloud.io \
-                -Dsonar.login=480fc6930d0cca103bb7c7b33407506c0c168868'
-            }
-			
-        }
          stage ('Build') {
             steps {
                 sh 'mvn clean install' 
@@ -35,5 +25,13 @@ pipeline {
                 }
             }
         }
+        stage('SonarQube analysis') {
+            steps {
+                sh 'mvn sonar:sonar \
+                -Dsonar.host.url=http://sonarqubelindacare.westeurope.cloudapp.azure.com:9000 \
+                -Dsonar.login=61198c2c65df058fd9543db21cede430e055acfc'
+            }
+        }
+
     }
 }
