@@ -16,7 +16,9 @@ node{
             sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
             sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
             sh 'az resource list'
-			//acsDeploy azureCredentialsId: 'mySP', configFilePaths: 'ssdfg', containerService: 'lindacarecontainer', dcosDockerCredentialsPath: '', resourceGroupName: 'lindacare-jenkins-test', secretName: '', sshCredentialsId: 'slave_ssh_key'
+			azureWebAppPublish azureCredentialsId: 'mySP',
+                   resourceGroup: 'lindacare-jenkins-test', appName: 'lindacare-java',
+                   filePath: '*.war', sourceDirectory: 'target', targetDirectory: 'webapps'
 			sh 'az logout'
         }
     }
