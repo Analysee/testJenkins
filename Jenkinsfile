@@ -1,5 +1,5 @@
 node{
-  stage ('Build1') {
+  stage ('Build') {
     withMaven(maven: 'maven') {
       sh "mvn clean install"
     } 
@@ -18,7 +18,7 @@ node{
             sh 'az resource list'
 			azureWebAppPublish azureCredentialsId: 'mySP2',
                    resourceGroup: 'lindacare-jenkins-test', appName: 'lindacare-java',
-                   filePath: '*.war', sourceDirectory: 'target', targetDirectory: 'webapps'
+                   filePath: '*.*', sourceDirectory: 'target', targetDirectory: 'webapps'
 			sh 'az logout'
         }
     }
