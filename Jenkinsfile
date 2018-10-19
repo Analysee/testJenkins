@@ -2,7 +2,8 @@ node{
   stage ('Build1') {
     withMaven(maven: 'maven') {
       sh "mvn clean install"
-	   sh "mvn clean package mv target/*.war target/ROOT.war"
+	   sh "mvn clean package"
+		sh"	mv target/*.war target/ROOT.war"
     } 
   }
   stage('SonarQube analysis') {
