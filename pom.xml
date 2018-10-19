@@ -15,7 +15,6 @@
       <scope>test</scope>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.codehaus.sonar/sonar-maven-plugin -->
-   
   </dependencies>
   <properties>
     <maven.compiler.source>1.6</maven.compiler.source>
@@ -23,9 +22,10 @@
   </properties>
 
   <distributionManagement>
-   <snapshotRepository>
+   <repository>
       <id>lindacare</id>
       <url>http://jenkins5lindacare.westeurope.cloudapp.azure.com:8081/repository/lindacare/</url>
-   </snapshotRepository>
+      <layout>default</layout>
+   </repository>
   </distributionManagement>
 </project>
