@@ -1,5 +1,5 @@
 node{
-  stage ('Build') {
+  stage ('Build1') {
     withMaven(maven: 'maven') {
       sh "mvn clean install"
     } 
