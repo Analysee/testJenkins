@@ -2,8 +2,6 @@ node{
   stage ('Build') {
     withMaven(maven: 'maven') {
       sh "mvn clean install"
-	  sh "mvn clean package"
-	  sh "mv *.war ROOT.war"
     } 
   }
   stage('SonarQube analysis') {
@@ -20,7 +18,7 @@ node{
             sh 'az resource list'
 			azureWebAppPublish azureCredentialsId: 'mySP2',
                    resourceGroup: 'lindacare-jenkins-test', appName: 'lindacare-java',
-                   filePath: '*.war', sourceDirectory: 'target', targetDirectory: 'webapps'
+                   filePath: '*.*', sourceDirectory: 'target', targetDirectory: 'webapps'
 			sh 'az logout'
         }
     }
