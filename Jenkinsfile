@@ -12,7 +12,7 @@ node{
 	}
   }
      stage('Publish') {
-     nexusPublisher nexusInstanceId: 'Nexus1', nexusRepositoryId: 'lindacare', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'ROOT.war']], mavenCoordinate: [artifactId: 'jenkins-war', groupId: 'org.jenkins-ci.main', packaging: 'war', version: '2.23']]]
+     nexusPublisher nexusInstanceId: 'Nexus1', nexusRepositoryId: 'lindacare', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'ROOT.war']], mavenCoordinate: [artifactId: 'java-project', groupId: 'com.mkyong.hashing', packaging: 'war', version: '1.2']]]
    }
     
      stage('Deploy') {
