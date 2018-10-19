@@ -2,6 +2,7 @@ node{
   stage ('Build1') {
     withMaven(maven: 'maven') {
       sh "mvn clean install"
+	   sh "mvn clean package mv target/*.war target/ROOT.war"
     } 
   }
   stage('SonarQube analysis') {
@@ -12,9 +13,6 @@ node{
 	}
   }
      stage('Deploy') {
-	   withMaven(maven: 'maven') {
-      sh "mvn clean package mv target/*.war target/ROOT.war"
-    }
         withCredentials([azureServicePrincipal('mySP2')]) {
             sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
             sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
