@@ -11,6 +11,10 @@ node{
 }
 	}
   }
+     stage('Publish') {
+     nexusPublisher nexusInstanceId: 'Nexus1', nexusRepositoryId: 'lindacare', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'ROOT.war']], mavenCoordinate: [artifactId: 'jenkins-war', groupId: 'org.jenkins-ci.main', packaging: 'war', version: '2.23']]]
+   }
+    
      stage('Deploy') {
         withCredentials([azureServicePrincipal('mySP2')]) {
             sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
@@ -22,4 +26,5 @@ node{
 			sh 'az logout'
         }
     }
+
 }
