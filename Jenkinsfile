@@ -26,5 +26,8 @@ node{
 			sh 'az logout'
         }
     }
+  stage('Publish') {
+     nexusPublisher nexusInstanceId: 'Nexus1', nexusRepositoryId: 'lindacare', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '*.war']], mavenCoordinate: [artifactId: 'java-project', groupId: 'com.mkyong.hashing', packaging: 'war', version: '2.23']]]
+   }
 
 }
