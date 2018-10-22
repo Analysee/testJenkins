@@ -111,6 +111,14 @@ Om te deployen naar azure:
 -Registreer deze in jenkins Credentials > System > Global Credentials > Add Credentials > Kind = Microsoft Azure Service Principal
 -Maven genereert de .war file die naar azure gepushed wordt. Hiervoor nog 1 ding specifieren in de POM.xml file van de java app:   <packaging>war</packaging>
 
+Nexus:
+Handig filmpje van een onverstaanbaare Indier deel 2: https://www.youtube.com/watch?v=7NmGSnqLd58
+Nuttige website: https://support.sonatype.com/hc/en-us/articles/227256688-How-do-I-configure-the-Nexus-Jenkins-Plugin
+Gegevens Pom file moeten overeenkomen met script : artifactId,groupId
+Belangrijk: Path file moet overeenkomen van war file! ( bij ons zit die in de target folder)
+We maken per build een nieuwe versie nummer aan ->       def verCode = UUID.randomUUID().toString()
+
+
 Jenkinsfile(SCRIPTED):
 
    node {
@@ -138,6 +146,10 @@ Jenkinsfile(SCRIPTED):
 	  }
 	 }
 	}
+	stage('Upload to nexus') {
+		def verCode = UUID.randomUUID().toString()
+		nexusPublisher nexusInstanceId: 'Nexus1', nexusRepositoryId: 'lindacare', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/ROOT.war']], mavenCoordinate: [artifactId: 'com.rutvikpatel.springboot.helloworld', groupId: 'com.rutvikpatel.springboot.helloworld', packaging: 'war',version:verCode]]]
+   }
     stage('Deploy') {
         withCredentials([azureServicePrincipal('mySP2')]) {
             sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
